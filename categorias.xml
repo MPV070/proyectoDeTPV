@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<categorias>
+    <categoria nombre="Bebidas">
+        <producto cantidad="1" imagen="C:\Users\mpvlm\Desktop\Clases\Desarrollo de Interfaces\cocaCola.png" nombre="Coca-cola" precio="2.3"/>
+    </categoria>
+    <categoria nombre="Mariscos"/>
+    <categoria nombre="Postres"/>
+    <categoria nombre="Pescados">
+        <producto cantidad="1" imagen="C:\Users\mpvlm\Desktop\Clases\Desarrollo de Interfaces\dorada.png" nombre="Dorada" precio="5.7"/>
+    </categoria>
+    <categoria nombre="Tapas"/>
+    <categoria nombre="Verduras"/>
+    <categoria nombre="Frutas"/>
+</categorias>
