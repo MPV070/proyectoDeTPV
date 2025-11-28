@@ -5,6 +5,11 @@
 package componentes;
 
 /**
+ * Pequeño componente botón reutilizable.
+ *
+ * Este panel contiene una etiqueta centrada y se usa como botón visual
+ * en distintas partes de la interfaz. Se comporta como un componente Swing
+ * extendido y expone un constructor por defecto.
  *
  * @author mpvlm
  */
@@ -12,6 +17,9 @@ public class boton1 extends javax.swing.JPanel {
 
     /**
      * Creates new form boton1
+     */
+    /**
+     * Construye el componente `boton1` e inicializa los componentes Swing.
      */
     public boton1() {
         initComponents();

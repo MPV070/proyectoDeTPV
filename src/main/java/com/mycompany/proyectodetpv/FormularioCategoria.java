@@ -13,6 +13,15 @@ import java.util.List;
  *
  * @author mpvlm
  */
+/**
+ * Diálogo para crear o borrar categorías.
+ *
+ * Permite al usuario introducir el nombre de una nueva categoría y guardarla en la
+ * interfaz (y en el XML), o borrar una categoría existente mediante el botón
+ * "Borrar" que muestra confirmación y elimina la categoría seleccionada.
+ *
+ * @author mpvlm
+ */
 public class FormularioCategoria extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormularioCategoria.class.getName());
@@ -20,6 +29,12 @@ public class FormularioCategoria extends javax.swing.JDialog {
 
     /**
      * Creates new form FomularioCategoria
+     */
+    /**
+     * Crea el diálogo de formulario de categorías.
+     *
+     * @param parent ventana padre (instancia de {@link PantPrincipal})
+     * @param modal {@code true} para que el diálogo sea modal
      */
     public FormularioCategoria(PantPrincipal parent, boolean modal) {
         super(parent, modal);

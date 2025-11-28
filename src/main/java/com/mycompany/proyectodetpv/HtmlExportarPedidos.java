@@ -16,10 +16,22 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 /**
+ * Utilidad para exportar el contenido de una tabla Swing a un archivo HTML.
+ *
+ * Genera una factura sencilla en HTML con los valores de la tabla y un
+ * recuento del total de la factura (se asume que la última columna es el total
+ * por fila).
  *
  * @author mpvlm
  */
 public class HtmlExportarPedidos {
+    /**
+     * Exporta el contenido de la tabla dada a un fichero HTML.
+     *
+     * @param tabla componente `JTable` cuyo contenido se exportará
+     * @param destino fichero destino donde se escribirá el HTML
+     * @throws IOException si ocurre un error de E/S durante la escritura
+     */
     public static void exportarTablaComoHtml(JTable tabla, File destino) throws IOException {
         TableModel model = tabla.getModel();
         LocalDateTime ahora = LocalDateTime.now();

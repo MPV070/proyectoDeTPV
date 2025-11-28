@@ -7,6 +7,10 @@ package componentes;
 import componentes.NuevoProducto;
 
 /**
+ * Panel que contiene visualmente los productos de una categoría.
+ *
+ * Proporciona un área desplazable con una cuadrícula de productos y métodos
+ * para añadir productos visuales al panel.
  *
  * @author mpvlm
  */
@@ -14,12 +18,22 @@ public class productoPanel extends javax.swing.JPanel {
 
     private String nombre;
 
+    /**
+     * Crea un nuevo panel de productos asociado a un nombre de categoría.
+     *
+     * @param nombre nombre de la categoría que identifica este panel
+     */
     public productoPanel(String nombre) {
         initComponents();
         this.nombre = nombre;
         this.setName(nombre); // útil para identificar el panel
     }
 
+    /**
+     * Añade un componente visual `NuevoProducto` a este panel.
+     *
+     * @param producto instancia visual del producto a añadir
+     */
     public void añadirProducto(NuevoProducto producto) {
         jPanel2.add(producto);   // añadimos la instancia, no la clase
         jPanel2.revalidate();

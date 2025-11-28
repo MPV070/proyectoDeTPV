@@ -16,6 +16,14 @@ import javax.swing.SwingUtilities;
 import org.w3c.dom.NodeList;
 
 /**
+ * Componente visual que representa una categoría en la columna lateral.
+ *
+ * Cada instancia mantiene una lista de objetos {@link com.mycompany.proyectodetpv.Producto}
+ * asociados y muestra el nombre de la categoría. Proporciona métodos para añadir y
+ * eliminar productos, así como para obtener y modificar el nombre.
+ *
+ * Está pensado para usarse dentro de un `BoxLayout` vertical en la ventana
+ * principal (`PantPrincipal`).
  *
  * @author mpvlm
  */
@@ -28,24 +36,47 @@ public class Categoria extends javax.swing.JPanel {
     private String nombre;
     private List<Producto> productos = new ArrayList<>();
 
+    /**
+     * Añade un producto lógico a la lista de productos de esta categoría.
+     *
+     * @param producto objeto {@link com.mycompany.proyectodetpv.Producto} a añadir
+     */
     public void agregarProducto(Producto producto) {
         productos.add(producto);
     }
 
+    /**
+     * Elimina el producto indicado de la lista de esta categoría.
+     *
+     * @param producto objeto {@link com.mycompany.proyectodetpv.Producto} a eliminar
+     */
     public void eliminarProducto(Producto producto) {
         productos.remove(producto);
     }
 
+    /**
+     * Elimina los productos cuyo nombre coincida con el nombre indicado.
+     *
+     * @param nombreProducto nombre del producto a eliminar
+     * @return {@code true} si se eliminó al menos un producto, {@code false} en caso contrario
+     */
     public boolean eliminarProductoPorNombre(String nombreProducto) {
         return productos.removeIf(prod -> prod.getNombre().equals(nombreProducto));
     }
 
+    /**
+     * Devuelve la lista de productos asociados a esta categoría.
+     *
+     * @return lista (mutable) de {@link com.mycompany.proyectodetpv.Producto}
+     */
     public List<Producto> getProductos() {
         return productos;
     }
 
     /**
-     * Creates new form Categoria
+     * Crea una nueva instancia de {@code Categoria} con el nombre indicado.
+     *
+     * @param text nombre inicial de la categoría
      */
     public Categoria(String text) {
         initComponents();
@@ -57,10 +88,20 @@ public class Categoria extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 60));
     }
 
+    /**
+     * Obtiene el nombre de la categoría.
+     *
+     * @return nombre de la categoría
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Establece el nombre visible e interno de la categoría.
+     *
+     * @param nombre nuevo nombre de la categoría
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
         jLabel1.setText((nombre == null || nombre.isEmpty()) ? "Categoría" : nombre);

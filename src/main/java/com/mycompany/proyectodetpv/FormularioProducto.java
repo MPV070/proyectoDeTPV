@@ -9,6 +9,12 @@ import componentes.NuevoProducto;
 import java.awt.Component;
 
 /**
+ * Diálogo para añadir un nuevo producto a la categoría seleccionada.
+ *
+ * Permite introducir nombre, precio y opcionalmente seleccionar una imagen.
+ * Al aceptar crea el objeto lógico {@link com.mycompany.proyectodetpv.Producto}
+ * y lo añade tanto a la interfaz como al almacenamiento XML mediante el método
+ * {@link PantPrincipal#guardarCategoriasDesdeInterfaz()}.
  *
  * @author mpvlm
  */
@@ -19,7 +25,10 @@ public class FormularioProducto extends javax.swing.JDialog {
     private Object componentes;
 
     /**
-     * Creates new form FormularioProducto
+     * Crea el diálogo de producto.
+     *
+     * @param parent ventana padre (se espera {@link PantPrincipal})
+     * @param modal {@code true} si el diálogo debe ser modal
      */
     public FormularioProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

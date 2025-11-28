@@ -30,6 +30,20 @@ public class categoriaxml {
     private static final String FILE_PATH = "categorias.xml";
 
     // Guardar categorías y productos en XML
+    /**
+     * Guarda la lista de categorías y sus productos en el fichero XML configurado.
+     *
+     * El formato es:
+     * <pre>
+     * &lt;categorias&gt;
+     *   &lt;categoria nombre="..."&gt;
+     *     &lt;producto nombre="..." precio="..." cantidad="..." imagen="..."/&gt;
+     *   &lt;/categoria&gt;
+     * &lt;/categorias&gt;
+     * </pre>
+     *
+     * @param categorias lista de componentes {@link componentes.Categoria} a persistir
+     */
     public static void guardarCategorias(List<Categoria> categorias) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -68,6 +82,11 @@ public class categoriaxml {
     }
 
     // Cargar categorías y productos desde XML
+    /**
+     * Carga las categorías y sus productos desde el fichero XML.
+     *
+     * @return lista de {@link componentes.Categoria} creada a partir del XML, lista vacía si no existe
+     */
     public static List<Categoria> cargarCategorias() {
         List<Categoria> categorias = new ArrayList<>();
 
@@ -115,6 +134,13 @@ public class categoriaxml {
         return categorias;
     }
 
+    /**
+     * Elimina del fichero XML la categoría cuyo atributo "nombre" coincida
+     * con el parámetro. Si se elimina, reescribe el fichero.
+     *
+     * @param nombre nombre de la categoría a eliminar
+     * @return {@code true} si se eliminó la categoría y el fichero fue actualizado, {@code false} en caso contrario
+     */
     // Eliminar una categoría por nombre y actualizar el archivo XML
     public static boolean eliminarCategoria(String nombre) {
         try {

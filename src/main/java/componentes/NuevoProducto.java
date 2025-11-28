@@ -10,6 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
+ * Componente visual que representa un producto en la cuadrícula de productos.
+ *
+ * Gestiona la interacción con clic simple (añadir a ticket) y doble clic
+ * (eliminar si el modo eliminación está activo). Mantiene la información básica
+ * del producto (nombre, precio, ruta de imagen) y proporciona getters necesarios.
  *
  * @author mpvlm
  */
@@ -23,6 +28,15 @@ public class NuevoProducto extends javax.swing.JPanel {
     private final String rutaImagen;
     private Timer singleClickTimer;
 
+    /**
+     * Construye la representación visual de un producto.
+     *
+     * @param owner ventana principal que maneja el estado de la aplicación
+     * @param categoriaNombre nombre de la categoría a la que pertenece el producto
+     * @param nombre nombre del producto
+     * @param precio precio por unidad
+     * @param rutaImagen ruta a la imagen asociada (puede ser {@code null})
+     */
     public NuevoProducto(PantPrincipal owner, String categoriaNombre, String nombre, float precio, String rutaImagen) {
         this.owner = owner;
         this.categoriaNombre = categoriaNombre;

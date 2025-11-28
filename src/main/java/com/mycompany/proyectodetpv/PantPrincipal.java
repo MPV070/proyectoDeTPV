@@ -14,6 +14,14 @@ import java.util.List;
 import javax.swing.JPanel;
 
 /**
+ * Ventana principal de la aplicación de TPV.
+ *
+ * Gestiona la interfaz principal, la lista de categorías y los paneles de productos,
+ * el modelo de la tabla de pedido y las operaciones relacionadas con la persistencia
+ * de categorías y productos en XML.
+ *
+ * Proporciona utilidades para añadir categorías desde diálogos y para activar
+ * un modo de eliminación por doble click.
  *
  * @author mpvlm
  */
@@ -21,6 +29,12 @@ public class PantPrincipal extends javax.swing.JFrame {
 
     private boolean modoEliminacionActivo = false;
 
+    /**
+     * Comprueba si existe un producto en el modelo del ticket por su nombre.
+     *
+     * @param nombre nombre del producto a buscar
+     * @return {@code true} si existe el producto en el ticket, {@code false} en caso contrario
+     */
     public static boolean existeProducto(String nombre) {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             if (modelo.getValueAt(i, 1).equals(nombre)) {
@@ -338,7 +352,12 @@ public class PantPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    // Método público para añadir una categoria y un panel de productos
+    /**
+     * Añade la vista de categoría al panel lateral y crea el panel de productos asociado.
+     *
+     * @param categoriaComponent componente visual de la categoría (por ejemplo `componentes.Categoria`)
+     * @param nombre nombre que identificará el panel de productos
+     */
     public void agregarCategoriaDesdeDialog(Component categoriaComponent, String nombre) {
         // Añadir componente categoria al panel izquierdo
         // Ensure new category aligns left so it expands to the viewport width
@@ -361,7 +380,6 @@ public class PantPrincipal extends javax.swing.JFrame {
         mostrarPanelProductosDe(nombre);
 
     }
-
     private JPanel getPanelProductosPorNombre(String nombreCat) {
         for (Component comp : basePProducto.getComponents()) {
             if (comp instanceof JPanel) {
@@ -401,6 +419,11 @@ public class PantPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Recolecta las instancias de `componentes.Categoria` presentes en la interfaz
+     * y delega en {@link categoriaxml#guardarCategorias(java.util.List)} para
+     * persistirlas en el fichero XML.
+     */
     public void guardarCategoriasDesdeInterfaz() {
         List<Categoria> categorias = new ArrayList<>();
 
@@ -440,6 +463,11 @@ public class PantPrincipal extends javax.swing.JFrame {
         dialogo.setVisible(true);
     }
 
+    /**
+     * Punto de entrada de la aplicación (uso para pruebas o ejecución independiente).
+     *
+     * @param args argumentos de línea de comando (sin uso)
+     */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> new PantPrincipal().setVisible(true));
@@ -466,6 +494,10 @@ public class PantPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTotal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Modelo estático para la tabla de pedido. Provee utilidades estáticas
+     * para añadir filas y consultar/actualizar valores en el `DefaultTableModel`.
+     */
     public static class modelo {
 
         private static final javax.swing.table.DefaultTableModel tabla = new javax.swing.table.DefaultTableModel(
@@ -479,22 +511,51 @@ public class PantPrincipal extends javax.swing.JFrame {
             }
         };
 
+        /**
+         * Añade una fila al modelo de la tabla.
+         *
+         * @param fila arreglo con los valores de la fila (Cantidad, Producto, Precio, Total)
+         */
         public static void addRow(Object[] fila) {
             tabla.addRow(fila);
         }
 
+        /**
+         * Devuelve el número de filas del modelo.
+         *
+         * @return número de filas
+         */
         public static int getRowCount() {
             return tabla.getRowCount();
         }
 
+        /**
+         * Obtiene el valor almacenado en una celda específica.
+         *
+         * @param fila índice de fila
+         * @param columna índice de columna
+         * @return valor de la celda
+         */
         public static Object getValueAt(int fila, int columna) {
             return tabla.getValueAt(fila, columna);
         }
 
+        /**
+         * Establece el valor de una celda en el modelo.
+         *
+         * @param valor valor a establecer
+         * @param fila índice de fila
+         * @param columna índice de columna
+         */
         public static void setValueAt(Object valor, int fila, int columna) {
             tabla.setValueAt(valor, fila, columna);
         }
 
+        /**
+         * Devuelve la instancia compartida del `DefaultTableModel` usada por la tabla.
+         *
+         * @return modelo de tabla
+         */
         public static javax.swing.table.DefaultTableModel getModelo() {
             return tabla;
         }
